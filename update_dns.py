@@ -1,11 +1,16 @@
 import requests
+import json
 
-# Enter your Porkbun API key and secret here
-API_KEY = 'pk1_0dbedc4ceb8178ddc7e781d20f055d65157e62719a5ba56708c924791e76e530'
-API_SECRET = 'sk1_eeb4bf79938b780c89f1928a1db4d4fdba133b4b7e2f3d7a8e301c4adf68952d'
+API_KEY = None
+API_SECRET = None
+DOMAIN_NAME = None
 
-# Enter your domain name and A record name here
-DOMAIN_NAME = 'dill.digital'
+#get API key and secret from config.json
+with open('config.json') as config_file:
+    data = json.load(config_file)
+    API_KEY = data['API_KEY']
+    API_SECRET = data['API_SECRET']
+    DOMAIN_NAME = data['DOMAIN']
 
 # Get your current public IP address
 def get_public_ip():
